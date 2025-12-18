@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Madhup Pandey | DevOps Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #38bdf8;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #020617;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ===== CANVAS BACKGROUND ===== */
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+/* ===== NAVBAR ===== */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(2,6,23,0.6);
+  z-index: 1000;
+}
+
+nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav ul li a {
+  color: var(--muted);
+  transition: color 0.3s;
+}
+
+nav ul li a:hover { color: var(--primary); }
+
+/* ===== SECTIONS ===== */
+section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 7rem 2rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 1;
+  transform: none;
+}
+
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+
+.hero h1 span { color: var(--primary); }
+
+.hero p {
+  max-width: 720px;
+  margin: 1.2rem auto 2rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  background: var(--primary);
+  color: #020617;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(56,189,248,0.45);
+}
+
+/* ===== ABOUT ===== */
+.about p {
+  max-width: 850px;
+  margin: auto;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ===== SKILLS ===== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.8rem;
+}
+
+.skill-card {
+  background: rgba(255,255,255,0.05);
+  padding: 1.8rem;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* ===== PROJECTS ===== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: rgba(255,255,255,0.05);
+  padding: 2rem;
+  border-radius: 20px;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.project-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.45);
+}
+
+.project-card h3 {
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.project-card p { color: var(--muted); }
+
+/* ===== CONTACT ===== */
+.contact { text-align: center; }
+.contact p { color: var(--muted); margin-bottom: 1.5rem; }
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--muted);
+}
+
+/* ===== CERTIFICATIONS ===== */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.cert-card {
+  background: rgba(255,255,255,0.05);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.cert-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.45);
+}
+
+.cert-card img {
+  width: 64px;
+  height: auto;
+  margin-bottom: 1.2rem;
+  filter: drop-shadow(0 10px 25px rgba(56,189,248,0.4));
+}
+
+.cert-card h3 {
+  color: var(--primary);
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.cert-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+
+/* ===== ABOUT SECTION ===== */
+.about {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.about-wrapper {
+  display: grid;
+  grid-template-columns: 1.3fr 2fr;
+  gap: 5rem;
+  width: 100%;
+  align-items: center;
+}
+
+/* LEFT IMAGE */
+.about-image {
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 420px;          /* BIG IMAGE */
+  max-width: 100%;
+  background: transparent;
+  filter: drop-shadow(0 30px 70px rgba(56,189,248,0.45));
+  animation: floatAvatar 6s ease-in-out infinite;
+}
+
+/* FLOAT ANIMATION */
+@keyframes floatAvatar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+  100% { transform: translateY(0); }
+}
+
+/* RIGHT CONTENT */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* CENTER VERTICALLY */
+}
+
+.about-content h2 {
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+}
+
+.about-content p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .about-wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-image img {
+    width: 300px;
+    margin-bottom: 2rem;
+  }
+
+  .about-content h2 {
+    font-size: 2.4rem;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.4rem; }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <nav>
+    <div class="logo">DevMadhup</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Hi, I'm <span>Madhup Pandey</span></h1>
+    <h3>Gitlab PSE Certified</h3>
+    <p>DevOps & DevSecOps Engineer building secure, scalable cloud & on-prem platforms.</p>
+    <a href="C:\Users\MADHUP\Downloads\Madhup_Final.pdf" class="btn">View My Resume</a>
+  </div>
+</section>
+
+<section id="certifications">
+  <h2>Certifications</h2>
+
+  <div class="cert-grid">
+
+    <div class="cert-card">
+      <img src="https://about.gitlab.com/images/press/logo/png/gitlab-icon-rgb.png" alt="GitLab" />
+      <h3>GitLab Certified</h3>
+      <p>Professional Services Engineer (PSE)</p>
+    </div>
+
+    <div class="cert-card">
+      <img src="C:\Users\MADHUP\Downloads\gitlab-certified-security-specialist.png" alt="AWS" />
+      <h3>Gitlab</h3>
+      <p>Gitlab Certified Security Specialist</p>
+    </div>
+
+    <div class="cert-card">
+      <img src="C:\Users\MADHUP\Downloads\gitlab-certified-ci-cd-associate.png" alt="Docker" />
+      <h3>Gitlab</h3>
+      <p>Gitlab Certified CI CD Associate</p>
+    </div>
+
+    <div class="cert-card">
+      <img src="C:\Users\MADHUP\Downloads\gitlab-certified-project-management-associate.png" alt="Kubernetes" />
+      <h3>Gitlab</h3>
+      <p>Gitlab Certified Project Management Associate</p>
+    </div>
+
+    <div class="cert-card">
+      <img src="C:\Users\MADHUP\Downloads\gitlab-certified-git-associate.png" alt="Kubernetes" />
+      <h3>Gitlab</h3>
+      <p>Gitlab Certified Git Associate</p>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="about" class="about">
+  <div class="about-wrapper">
+
+    <!-- LEFT: Large DevOps Avatar -->
+    <div class="about-image">
+      <img
+        src="C:\Users\MADHUP\Downloads\icon.png"
+        alt="DevOps Engineer Avatar"
+      />
+    </div>
+
+    <!-- RIGHT: Centered Content -->
+    <div class="about-content">
+      <h2>About Me</h2>
+
+      <p>
+        I work on <strong>CI/CD, Kubernetes, Cloud, Infrastructure as Code</strong>,
+        monitoring and security automation to build reliable, scalable
+        production systems.
+      </p>
+
+      <p>
+        I enjoy solving complex infrastructure problems and enabling teams
+        to ship faster with confidence.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">GitLab </div>
+    <div class="skill-card">Linux</div>
+    <div class="skill-card">Git & GitHub</div>
+    <div class="skill-card">Docker</div>
+    <div class="skill-card">Kubernetes</div>
+    <div class="skill-card">AWS</div>
+    <div class="skill-card">Terraform</div>
+    
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>CI/CD Platform</h3>
+      <p>Secure GitLab pipelines with SAST, DAST & container scanning.</p>
+    </div>
+    <div class="project-card">
+      <h3>K8s Monitoring</h3>
+      <p>Prometheus, Grafana & Alertmanager on AWS EKS.</p>
+    </div>
+    <div class="project-card">
+      <h3>IaC Automation</h3>
+      <p>Terraform-based AWS infrastructure provisioning.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p>Let’s build reliable systems together.</p>
+  <a href="mailto:youremail@example.com" class="btn">Say Hello</a>
+</section>
+
+<footer>© 2025 Madhup Pandey</footer>
+
+<script>
+
+/* Add Toogle functionality for Mobile Nav if needed in future */
+
+
+
+
+/* ===== SCROLL ANIMATION ===== */
+const sections = document.querySelectorAll("section");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("show");
+  });
+}, { threshold: 0.15 });
+sections.forEach(section => observer.observe(section));
+
+/* ===== PARTICLE NETWORK BACKGROUND ===== */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+let w, h, particles;
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+particles = Array.from({ length: 80 }, () => ({
+  x: Math.random() * w,
+  y: Math.random() * h,
+  vx: (Math.random() - 0.5) * 0.6,
+  vy: (Math.random() - 0.5) * 0.6
+}));
+
+function animate() {
+  ctx.clearRect(0, 0, w, h);
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0 || p.x > w) p.vx *= -1;
+    if (p.y < 0 || p.y > h) p.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
+    ctx.fillStyle = "#38bdf8";
+    ctx.fill();
+  });
+
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        ctx.strokeStyle = "rgba(56,189,248,0.1)";
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
