@@ -316,6 +316,38 @@ footer {
 @media (max-width: 768px) {
   .hero h1 { font-size: 2.4rem; }
 }
+
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+  nav ul {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: rgba(2,6,23,0.95);
+    flex-direction: column;
+    width: 220px;
+    padding: 1.5rem;
+    gap: 1.2rem;
+    display: none;
+    border-radius: 12px;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
 </style>
 </head>
 
@@ -325,15 +357,21 @@ footer {
 
 <header>
   <nav>
-    <div class="logo">DevMadhup</div>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <div class="logo">DevMadhup</div>
+
+  <div class="menu-toggle" id="menu-toggle">
+    ☰
+  </div>
+
+  <ul id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
 </header>
 
 <section class="hero">
@@ -390,7 +428,7 @@ footer {
     <!-- LEFT: Large DevOps Avatar -->
     <div class="about-image">
       <img
-        src="C:\Users\MADHUP\Downloads\icon.png"
+        src="C:\Users\MADHUP\Downloads\Portfolio\icon.png"
         alt="DevOps Engineer Avatar"
       />
     </div>
@@ -460,8 +498,12 @@ footer {
 
 /* Add Toogle functionality for Mobile Nav if needed in future */
 
+const toggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
 
-
+toggle.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+});
 
 /* ===== SCROLL ANIMATION ===== */
 const sections = document.querySelectorAll("section");
