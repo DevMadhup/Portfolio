@@ -28,6 +28,8 @@ body {
   overflow-x: hidden;
 }
 
+
+
 /* ===== CANVAS BACKGROUND ===== */
 canvas {
   position: fixed;
@@ -69,6 +71,7 @@ nav ul {
 nav ul li a {
   color: var(--muted);
   transition: color 0.3s;
+  text-decoration: none;
 }
 
 nav ul li a:hover { color: var(--primary); }
@@ -109,6 +112,8 @@ section h2 {
   font-size: 3.2rem;
   font-weight: 700;
 }
+
+
 
 .hero h1 span { color: var(--primary); }
 
@@ -254,6 +259,11 @@ footer {
   align-items: center;
 }
 
+.btn {
+  text-decoration: none;
+}
+
+
 /* LEFT IMAGE */
 .about-image {
   display: flex;
@@ -357,18 +367,19 @@ footer {
 
 <header>
   <nav>
-  <div class="logo">DevMadhup</div>
+  <div class="logo" >DevMadhup</div>
 
   <div class="menu-toggle" id="menu-toggle">
     ☰
   </div>
 
   <ul id="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="certifications.html">Certifications</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
 </nav>
 
@@ -381,117 +392,6 @@ footer {
     <p>DevOps & DevSecOps Engineer building secure, scalable cloud & on-prem platforms.</p>
     <a href="https://raw.githubusercontent.com/DevMadhup/Portfolio/master/Madhup_Final.pdf" class="btn">View My Resume</a>
   </div>
-</section>
-
-<section id="certifications">
-  <h2>Certifications</h2>
-
-  <div class="cert-grid">
-
-    <div class="cert-card">
-      <img src="https://about.gitlab.com/images/press/logo/png/gitlab-icon-rgb.png" alt="GitLab" />
-      <h3>GitLab Certified</h3>
-      <p>Professional Services Engineer (PSE)</p>
-    </div>
-
-    <div class="cert-card">
-      <img src="https://raw.githubusercontent.com/DevMadhup/Portfolio/master/gitlab-certified-security-specialist.png" alt="AWS" />
-      <h3>Gitlab</h3>
-      <p>Gitlab Certified Security Specialist</p>
-    </div>
-
-    <div class="cert-card">
-      <img src="https://raw.githubusercontent.com/DevMadhup/Portfolio/master/gitlab-certified-ci-cd-associate.png" alt="Docker" />
-      <h3>Gitlab</h3>
-      <p>Gitlab Certified CI CD Associate</p>
-    </div>
-
-    <div class="cert-card">
-      <img src="https://raw.githubusercontent.com/DevMadhup/Portfolio/master/gitlab-certified-project-management-associate.png" alt="Kubernetes" />
-      <h3>Gitlab</h3>
-      <p>Gitlab Certified Project Management Associate</p>
-    </div>
-
-    <div class="cert-card">
-      <img src="https://raw.githubusercontent.com/DevMadhup/Portfolio/master/gitlab-certified-git-associate.png" alt="Kubernetes" />
-      <h3>Gitlab</h3>
-      <p>Gitlab Certified Git Associate</p>
-    </div>
-
-  </div>
-</section>
-
-
-<section id="about" class="about">
-  <div class="about-wrapper">
-
-    <!-- LEFT: Large DevOps Avatar -->
-    <div class="about-image">
-      <img
-        src="https://raw.githubusercontent.com/DevMadhup/Portfolio/master/icon.png"
-        alt="DevOps Engineer Avatar"
-      />
-    </div>
-
-    <!-- RIGHT: Centered Content -->
-    <div class="about-content">
-      <h2>About Me</h2>
-
-      <p>
-        I work on <strong>CI/CD, Kubernetes, Cloud, Infrastructure as Code</strong>,
-        monitoring and security automation to build reliable, scalable
-        production systems.
-      </p>
-
-      <p>
-        I enjoy solving complex infrastructure problems and enabling teams
-        to ship faster with confidence.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-
-<section id="skills">
-  <h2>Skills</h2>
-  <div class="skills-grid">
-    <div class="skill-card">GitLab </div>
-    <div class="skill-card">Linux</div>
-    <div class="skill-card">Git & GitHub</div>
-    <div class="skill-card">Docker</div>
-    <div class="skill-card">Kubernetes</div>
-    <div class="skill-card">AWS</div>
-    <div class="skill-card">Terraform</div>
-    
-  </div>
-</section>
-
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <h3>CI/CD Platform</h3>
-      <p>Secure GitLab pipelines with SAST, DAST & container scanning.</p>
-    </div>
-    <div class="project-card">
-      <h3>K8s Monitoring</h3>
-      <p>Prometheus, Grafana & Alertmanager on AWS EKS.</p>
-    </div>
-    <div class="project-card">
-      <h3>IaC Automation</h3>
-      <p>Terraform-based AWS infrastructure provisioning.</p>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="contact">
-  <h2>Contact</h2>
-  <p>Let’s build reliable systems together.</p>
-  <a href="mailto:8007930568pandey@gmail.com" class="btn" style="padding: 5px 10px; border-radius: 10px; background: none !important;">
-    <img src="https://raw.githubusercontent.com/DevMadhup/Portfolio/master/mail.png" alt="Email Icon" style="width: 35px" >
-  </a>
 </section>
 
 <footer>© 2025 Madhup Pandey</footer>
@@ -566,6 +466,7 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+
 </script>
 
 </body>

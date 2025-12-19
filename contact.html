@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact | Madhup Pandey</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #38bdf8;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #020617;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ===== CANVAS BACKGROUND ===== */
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+/* ===== NAVBAR ===== */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(2,6,23,0.6);
+  z-index: 1000;
+}
+
+nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav ul li a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: var(--primary);
+}
+
+/* ===== CONTACT PAGE ===== */
+.contact {
+  min-height: 100vh;
+  padding: 7rem 2rem 4rem;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.contact h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact p {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.contact .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact .btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(56,189,248,0.4);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .contact h2 {
+    font-size: 2.2rem;
+  }
+}
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<!-- SAME BACKGROUND CANVAS -->
+<canvas id="bg"></canvas>
+
+<header>
+  <nav>
+    <div class="logo">DevMadhup</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="certifications.html">Certifications</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="contact">
+  <h2>Contact</h2>
+  <p>Let’s build reliable systems together.</p>
+
+  <a
+    href="mailto:8007930568pandey@gmail.com"
+    class="btn"
+    style="background: none !important;"
+    aria-label="Send Email"
+  >
+    <img
+      src="mail.png"
+      alt="Email Icon"
+      style="width: 40px"
+    />
+  </a>
+</section>
+
+<footer>© 2025 Madhup Pandey</footer>
+<script>
+/* ===== PARTICLE NETWORK BACKGROUND (SAME AS INDEX) ===== */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+let w, h, particles;
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+particles = Array.from({ length: 80 }, () => ({
+  x: Math.random() * w,
+  y: Math.random() * h,
+  vx: (Math.random() - 0.5) * 0.6,
+  vy: (Math.random() - 0.5) * 0.6
+}));
+
+function animate() {
+  ctx.clearRect(0, 0, w, h);
+
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0 || p.x > w) p.vx *= -1;
+    if (p.y < 0 || p.y > h) p.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
+    ctx.fillStyle = "#38bdf8";
+    ctx.fill();
+  });
+
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        ctx.strokeStyle = "rgba(56,189,248,0.1)";
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>

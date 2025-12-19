@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About | Madhup Pandey</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary: #38bdf8;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #020617;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ===== CANVAS BACKGROUND (SAME AS INDEX) ===== */
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+/* ===== NAVBAR ===== */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  backdrop-filter: blur(12px);
+  background: rgba(2,6,23,0.6);
+  z-index: 1000;
+}
+
+nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav ul li a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: var(--primary);
+}
+
+/* ===== ABOUT PAGE ===== */
+.about {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 6rem;
+}
+
+.about-wrapper {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.3fr 2fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-image {
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 420px;
+  max-width: 100%;
+  background: transparent;
+  filter: drop-shadow(0 30px 70px rgba(56,189,248,0.45));
+  animation: floatAvatar 6s ease-in-out infinite;
+}
+
+@keyframes floatAvatar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+  100% { transform: translateY(0); }
+}
+
+.about-content h2 {
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+}
+
+.about-content p {
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+}
+
+.about-content a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .about-wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-image img {
+    width: 300px;
+  }
+
+  .about-content h2 {
+    font-size: 2.4rem;
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<!-- SAME BACKGROUND CANVAS -->
+<canvas id="bg"></canvas>
+
+<header>
+  <nav>
+    <div class="logo">DevMadhup</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="certifications.html">Certifications</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="about">
+  <div class="about-wrapper">
+
+    <!-- LEFT -->
+    <div class="about-image">
+      <img src="icon.png" alt="DevOps Engineer Avatar" />
+    </div>
+
+    <!-- RIGHT -->
+    <div class="about-content">
+      <h2>About Me</h2>
+
+      <p>
+        Hi, I’m Madhup Pandey, a <strong>DevOps Engineer and GitLab Certified Professional</strong> working @<strong>technologies private limited</strong>, passionate about helping engineering teams deliver secure, scalable, and reliable applications.
+
+I have developed a strong understanding of DevOps principles, CI/CD best practices, and modern software delivery workflows. I work closely with software developers to automate build, test, and deployment processes, enabling faster releases while maintaining stability, security, and observability.
+
+
+      </p>
+
+      <p>
+        My technical expertise includes designing and supporting CI/CD pipelines, containerized environments, and observability platforms. I have practical experience with tools and technologies such as Docker, Jenkins, Chef, Ansible, Bamboo, Git, GitHub, Linux, Shell Scripting, Nginx, Apache Tomcat, and container orchestration using Docker Compose. I also work extensively with monitoring and logging stacks including Prometheus, Grafana, Loki, and Promtail.
+        </p>
+
+        <p>
+As a <strong>Certified Professional Services Engineer (PSE)</strong>, I bring a strong understanding of GitLab’s DevSecOps platform, CI/CD pipelines, and security integrations, aligned with real-world enterprise workflows.
+      </p>
+
+      <p>If you’d like to connect or collaborate on DevOps, CI/CD automation, cloud infrastructure, or platform engineering, feel free to reach out at <a href="contact.html">Here</a> </p>
+    </div>
+
+  </div>
+
+</section>
+
+  <footer>© 2025 Madhup Pandey</footer>
+<script>
+/* ===== PARTICLE NETWORK BACKGROUND (SAME AS INDEX) ===== */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+let w, h, particles;
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+particles = Array.from({ length: 80 }, () => ({
+  x: Math.random() * w,
+  y: Math.random() * h,
+  vx: (Math.random() - 0.5) * 0.6,
+  vy: (Math.random() - 0.5) * 0.6
+}));
+
+function animate() {
+  ctx.clearRect(0, 0, w, h);
+
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0 || p.x > w) p.vx *= -1;
+    if (p.y < 0 || p.y > h) p.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
+    ctx.fillStyle = "#38bdf8";
+    ctx.fill();
+  });
+
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 120) {
+        ctx.strokeStyle = "rgba(56,189,248,0.1)";
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
